@@ -15,7 +15,7 @@
             with:
               credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
           - run: sudo apt update
-          - run: sudo apt uninstall google-cloud-sdk
+          - run: sudo apt remove google-cloud-sdk
           - run: curl https://sdk.cloud.google.com | bash > /dev/null
           - run: source $HOME/google-cloud-sdk/path.bash.inc
           - run: gcloud components install kubectl
