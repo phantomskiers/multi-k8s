@@ -3,7 +3,9 @@
       push:
         branches:
           - master
-     
+    env:
+      - SHA: $(git rev-parse HEAD)
+      - CLOUDSDK_CORE_DISABLE_PROMPTS: 1 
     jobs:
       build:
         runs-on: ubuntu-latest
