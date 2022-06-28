@@ -4,7 +4,6 @@
         branches:
           - master
     env:
-      SHA: git rev-parse HEAD
       CLOUDSDK_CORE_DISABLE_PROMPTS: 1 
     jobs:
       build:
@@ -16,7 +15,10 @@
             uses: 'google-github-actions/auth@v0'
             with:
               credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-          - run: echo ${SHA}
+          - name: Set SHA
+            run: echo "SHA=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+          - name: Test
+            run: echo ${SHA}
           # - run: sudo apt update
           # - run: sudo apt remove google-cloud-sdk
           # - run: curl https://sdk.cloud.google.com | bash > /dev/null
