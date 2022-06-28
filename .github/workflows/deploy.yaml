@@ -19,15 +19,15 @@
             run: echo "SHA=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
           - name: Test
             run: echo ${SHA}
-          # - run: sudo apt update
-          # - run: sudo apt remove google-cloud-sdk
-          # - run: curl https://sdk.cloud.google.com | bash > /dev/null
-          # - run: source $HOME/google-cloud-sdk/path.bash.inc
-          # - run: $HOME/google-cloud-sdk/bin/gcloud components install kubectl
-          # - run: $HOME/google-cloud-sdk/bin/gcloud config set project multi-k8s-353909
-          # - run: $HOME/google-cloud-sdk/bin/gcloud config set compute/zone us-east1-b
-          # - run: $HOME/google-cloud-sdk/bin/gcloud container clusters get-credentials multi-cluster
-          # - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          # - run: docker build -t phantomskiers/react-test -f ./client/Dockerfile.dev ./client
-          # - run: docker run -e CI=true phantomskiers/react-test npm test -- --coverage
-          # - run: bash ${PWD}/deploy.sh
+          - run: sudo apt update
+          - run: sudo apt remove google-cloud-sdk
+          - run: curl https://sdk.cloud.google.com | bash > /dev/null
+          - run: source $HOME/google-cloud-sdk/path.bash.inc
+          - run: $HOME/google-cloud-sdk/bin/gcloud components install kubectl
+          - run: $HOME/google-cloud-sdk/bin/gcloud config set project multi-k8s-353909
+          - run: $HOME/google-cloud-sdk/bin/gcloud config set compute/zone us-east1-b
+          - run: $HOME/google-cloud-sdk/bin/gcloud container clusters get-credentials multi-cluster
+          - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          - run: docker build -t phantomskiers/react-test -f ./client/Dockerfile.dev ./client
+          - run: docker run -e CI=true phantomskiers/react-test npm test -- --coverage
+          - run: bash ${PWD}/deploy.sh
