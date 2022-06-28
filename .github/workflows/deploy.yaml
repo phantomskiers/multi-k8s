@@ -16,39 +16,16 @@
             uses: 'google-github-actions/auth@v0'
             with:
               credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-          - run: sudo apt update
-          - run: sudo apt remove google-cloud-sdk
-          - run: curl https://sdk.cloud.google.com | bash > /dev/null
-          - run: source $HOME/google-cloud-sdk/path.bash.inc
-          - run: $HOME/google-cloud-sdk/bin/gcloud components install kubectl
-          - run: $HOME/google-cloud-sdk/bin/gcloud config set project multi-k8s-353909
-          - run: $HOME/google-cloud-sdk/bin/gcloud config set compute/zone us-east1-b
-          - run: $HOME/google-cloud-sdk/bin/gcloud container clusters get-credentials multi-cluster
-          - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          - run: docker build -t phantomskiers/react-test -f ./client/Dockerfile.dev ./client
-          - run: docker run -e CI=true phantomskiers/react-test npm test -- --coverage
-          - run: bash ${PWD}/deploy.sh
-          # - run: docker build -t phantomskiers/multi-client ./client
-          # - run: docker build -t phantomskiers/multi-nginx ./nginx
-          # - run: docker build -t phantomskiers/multi-server ./server
-          # - run: docker build -t phantomskiers/multi-worker ./worker
-          # - run: docker push phantomskiers/multi-client
-          # - run: docker push phantomskiers/multi-nginx
-          # - run: docker push phantomskiers/multi-server
-          # - run: docker push phantomskiers/multi-worker
-
-          # - name: Generate deployment package
-          #   run: zip -r deploy.zip . -x '*.git*'
-     
-          # - name: Deploy to EB
-          #   uses: einaregilsson/beanstalk-deploy@v18
-          #   with:
-          #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          #     aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          #     application_name: multi-docker2
-          #     environment_name: Multidocker2-env
-          #     existing_bucket_name: elasticbeanstalk-us-east-1-868900174760
-          #     region: us-east-1
-          #     version_label: ${{ github.sha }}
-          #     wait_for_environment_recovery: 120
-          #     deployment_package: deploy.zip
+          - run: echo ${SHA}
+          # - run: sudo apt update
+          # - run: sudo apt remove google-cloud-sdk
+          # - run: curl https://sdk.cloud.google.com | bash > /dev/null
+          # - run: source $HOME/google-cloud-sdk/path.bash.inc
+          # - run: $HOME/google-cloud-sdk/bin/gcloud components install kubectl
+          # - run: $HOME/google-cloud-sdk/bin/gcloud config set project multi-k8s-353909
+          # - run: $HOME/google-cloud-sdk/bin/gcloud config set compute/zone us-east1-b
+          # - run: $HOME/google-cloud-sdk/bin/gcloud container clusters get-credentials multi-cluster
+          # - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          # - run: docker build -t phantomskiers/react-test -f ./client/Dockerfile.dev ./client
+          # - run: docker run -e CI=true phantomskiers/react-test npm test -- --coverage
+          # - run: bash ${PWD}/deploy.sh
