@@ -16,7 +16,7 @@
         - hosts:
             - retort-app.com
             - www.retort-app.com
-          secretName: retort-app-com
+          secretName: retort-app-com-6mz6p
       rules:
         - host: retort-app.com
           http:
